@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shashwat Mittal — Portfolio</title>
   <meta name="description" content="Portfolio of Shashwat Mittal — CS student, robotics enthusiast, and budding software developer." />
-
-  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
+  <!-- Animate On Scroll Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
   <style>
-    /* ===== Theme ===== */
     :root {
-      --bg:#f8f9fb;
-      --card:#ffffffdd;
+      --bg:#f9f9fb;
+      --card:#ffffffcc;
       --accent:#ff9800;
       --accent-2:#2196f3;
       --text:#222;
       --muted:#555;
-      --border:#ddd;
+      --border:#e5e5e5;
       --radius:18px;
       --shadow:0 8px 20px rgba(0,0,0,.08);
       --maxw:1100px;
@@ -26,15 +26,13 @@
 
     *{box-sizing:border-box}
     body {
-      margin:0;
-      font-family: "Segoe UI", Roboto, Inter, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height:1.6;
+      margin:0; font-family: "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg); color: var(--text); line-height:1.6;
+      overflow-x:hidden;
     }
     html{scroll-behavior:smooth}
     .wrap{max-width:var(--maxw); margin:auto; padding:0 20px}
-    section{padding:60px 0}
+    section{padding:70px 0}
 
     /* Header */
     header {
@@ -48,41 +46,55 @@
       width:36px; height:36px; border-radius:12px;
       background:linear-gradient(135deg,var(--accent),#ffcc80);
       display:grid; place-items:center;
-      color:#fff; font-weight:900;
-      box-shadow: var(--shadow);
+      color:#fff; font-weight:900; box-shadow: var(--shadow);
     }
-    nav a {
-      margin-left:18px; text-decoration:none; color:var(--text);
-      font-weight:600; opacity:.9;
-    }
+    nav a {margin-left:18px; text-decoration:none; color:var(--text); font-weight:600; opacity:.9;}
     nav a:hover{color:var(--accent)}
-    .menu-btn{display:none; background:none; border:0; color:var(--text); font-size:1.3rem}
+    .menu-btn{display:none; background:none; border:0; font-size:1.3rem}
 
     /* Hero */
-    .hero{padding:70px 0}
+    .hero{padding:100px 0 70px}
     .hero-card {
-      display:grid; grid-template-columns:180px 1fr; gap:26px;
+      display:grid; grid-template-columns:200px 1fr; gap:32px;
       background:var(--card); border:1px solid var(--border);
-      border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
+      border-radius:var(--radius); padding:30px; box-shadow:var(--shadow);
+      align-items:center;
     }
-    .avatar{width:180px; height:180px; border-radius:18px; object-fit:cover}
-    h1{margin:.2rem 0; font-size:2.2rem}
+    .avatar{width:200px; height:200px; border-radius:18px; object-fit:cover}
+    h1{margin:.2rem 0; font-size:2.5rem}
+    .tagline{font-size:1.2rem; color:var(--muted); margin-bottom:20px}
     .btn {
-      padding:12px 16px; border-radius:12px;
+      padding:12px 18px; border-radius:12px;
       background:#f1f1f1; color:var(--text); text-decoration:none;
       font-weight:600; display:inline-block; margin-right:10px;
       transition:.2s;
     }
     .btn.primary{background:linear-gradient(135deg,var(--accent),#ffcc80); color:#fff}
-    .btn:hover{transform:translateY(-2px); box-shadow: var(--shadow)}
+    .btn:hover{transform:translateY(-3px); box-shadow: var(--shadow)}
 
     /* Sections */
-    .sec-title{font-size:1.6rem; margin-bottom:20px; color:var(--accent)}
-    .card{background:var(--card); padding:20px; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow)}
+    .sec-title{font-size:1.8rem; margin-bottom:30px; color:var(--accent); text-align:center}
+    .card{background:var(--card); padding:24px; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow)}
+
+    /* Floating skills */
+    .skills-cloud {
+      display:flex; flex-wrap:wrap; gap:14px; justify-content:center;
+    }
+    .skill-bubble {
+      padding:12px 20px; background:#fff; border-radius:30px;
+      box-shadow: var(--shadow); font-weight:600;
+      animation: floaty 6s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+    }
 
     /* Projects */
     .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px}
-    .proj{border:1px solid var(--border); border-radius:16px; background:var(--card); padding:16px; box-shadow:var(--shadow)}
+    .proj{border:1px solid var(--border); border-radius:16px; background:var(--card); padding:20px; box-shadow:var(--shadow); transition:transform .3s}
+    .proj:hover{transform:rotateX(5deg) rotateY(-5deg);}
+
     .proj h3{margin-top:0; color:var(--accent)}
 
     /* Contact */
@@ -97,14 +109,15 @@
       border-radius:12px; font-weight:700; color:#fff; cursor:pointer;
     }
     button:hover{background:#ffac33}
+    .success-message{color:green; font-weight:600; display:none; margin-top:10px}
 
     footer{padding:20px; text-align:center; color:var(--muted); border-top:1px solid var(--border)}
 
     /* Mobile */
     @media(max-width:700px){
-      .hero-card{grid-template-columns:1fr}
-      .avatar{width:120px; height:120px}
-      h1{font-size:1.8rem}
+      .hero-card{grid-template-columns:1fr; text-align:center}
+      .avatar{width:140px; height:140px; margin:auto}
+      h1{font-size:2rem}
       .menu-btn{display:block}
       nav{display:none}
       nav.open{display:block; position:absolute; top:64px; left:0; right:0; background:#fff; padding:20px}
@@ -133,20 +146,20 @@
 
   <!-- Hero -->
   <div class="wrap hero">
-    <div class="hero-card">
+    <div class="hero-card" data-aos="fade-up">
       <img src="shashwat.jpg" alt="Shashwat Mittal" class="avatar" />
       <div>
-        <h1>Hi, I’m Shashwat — CS Student & Robotics Enthusiast</h1>
-        <p>Passionate about coding, robotics, and solving real-world problems through tech.</p>
-        <a href="Shashwat_Mittal_CV.pdf" download class="btn primary">📄 Download CV</a>
-        <a href="#projects" class="btn">🧰 View Projects</a>
+        <h1 data-aos="fade-right" data-aos-delay="200">Hi, I’m Shashwat</h1>
+        <p class="tagline" data-aos="fade-right" data-aos-delay="400">CS Student & Robotics Enthusiast</p>
+        <a href="Shashwat_Mittal_CV.pdf" download class="btn primary" data-aos="zoom-in" data-aos-delay="600">📄 Download CV</a>
+        <a href="#projects" class="btn" data-aos="zoom-in" data-aos-delay="700">🧰 View Projects</a>
       </div>
     </div>
   </div>
 
   <!-- About -->
   <section id="about">
-    <div class="wrap">
+    <div class="wrap" data-aos="fade-up">
       <h2 class="sec-title">About Me</h2>
       <div class="card">
         Motivated Computer Science student with a foundation in programming, algorithms, and problem-solving. 
@@ -157,19 +170,26 @@
 
   <!-- Skills -->
   <section id="skills">
-    <div class="wrap">
+    <div class="wrap" data-aos="fade-up">
       <h2 class="sec-title">Skills</h2>
-      <div class="card">
-        <p><b>Programming:</b> C, C++, Python, HTML, CSS, JavaScript</p>
-        <p><b>Tools:</b> Excel, Word, PowerPoint, GitHub</p>
-        <p><b>Strengths:</b> Communication, Teamwork, Problem-Solving, Adaptability</p>
+      <div class="skills-cloud">
+        <div class="skill-bubble">C</div>
+        <div class="skill-bubble">C++</div>
+        <div class="skill-bubble">Python</div>
+        <div class="skill-bubble">HTML</div>
+        <div class="skill-bubble">CSS</div>
+        <div class="skill-bubble">JavaScript</div>
+        <div class="skill-bubble">Excel</div>
+        <div class="skill-bubble">PowerPoint</div>
+        <div class="skill-bubble">Communication</div>
+        <div class="skill-bubble">Adaptability</div>
       </div>
     </div>
   </section>
 
   <!-- Certifications -->
   <section id="certs">
-    <div class="wrap">
+    <div class="wrap" data-aos="fade-up">
       <h2 class="sec-title">Certifications & Activities</h2>
       <div class="card">
         <ul>
@@ -183,41 +203,29 @@
 
   <!-- Projects -->
   <section id="projects">
-    <div class="wrap">
+    <div class="wrap" data-aos="fade-up">
       <h2 class="sec-title">Projects</h2>
       <div class="projects">
-        <div class="proj">
-          <h3>ATM Interface (C)</h3>
-          <p>Simulated ATM program with PIN validation, deposits, and withdrawals.</p>
-        </div>
-        <div class="proj">
-          <h3>Budget Tracker (Python)</h3>
-          <p>Expense tracking tool with categories and monthly summaries.</p>
-        </div>
-        <div class="proj">
-          <h3>Portfolio Website</h3>
-          <p>Responsive personal site showcasing my skills and work.</p>
-        </div>
-        <div class="proj">
-          <h3>Robotics Mini Projects</h3>
-          <p>Club experiments: basic line-following logic, sensor reading, and control routines.</p>
-        </div>
+        <div class="proj"><h3>ATM Interface (C)</h3><p>Simulated ATM program with PIN validation, deposits, and withdrawals.</p></div>
+        <div class="proj"><h3>Budget Tracker (Python)</h3><p>Expense tracking tool with categories and monthly summaries.</p></div>
+        <div class="proj"><h3>Portfolio Website</h3><p>Responsive personal site showcasing my skills and work.</p></div>
+        <div class="proj"><h3>Robotics Mini Projects</h3><p>Basic line-following, sensor reading, and robot control routines.</p></div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact">
-    <div class="wrap">
+    <div class="wrap" data-aos="fade-up">
       <h2 class="sec-title">Contact Me</h2>
       <div class="card">
-        <form action="https://formspree.io/f/mpwjkkly" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/mpwjkkly" method="POST">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="_replyto" placeholder="Your Email" required />
           <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
           <button type="submit">Send Message</button>
         </form>
-        <p style="margin-top:10px">Or reach me directly at <a href="mailto:mittalshashwatam@gmail.com">mittalshashwatam@gmail.com</a></p>
+        <p class="success-message" id="successMsg">✅ Thanks! I'll get back to you soon.</p>
       </div>
     </div>
   </section>
@@ -226,9 +234,24 @@
     © <span id="y"></span> Shashwat Mittal — Built with ❤️
   </footer>
 
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init({duration:800, once:true});
     function toggleMenu(){document.getElementById("nav").classList.toggle("open");}
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Success message for form
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const res = await fetch(form.action, {method:"POST", body:data, headers:{'Accept':'application/json'}});
+      if(res.ok){
+        document.getElementById("successMsg").style.display="block";
+        form.reset();
+      }
+    });
   </script>
 </body>
 </html>
