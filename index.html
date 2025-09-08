@@ -10,55 +10,53 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <style>
-    /* ===== Theme Variables ===== */
+    /* ===== Theme ===== */
     :root {
-      --bg:#0e1116;
-      --card:#151a21aa;
-      --accent:#ffb74d;
-      --accent-2:#6ee7ff;
-      --text:#e8eef4;
-      --muted:#a9b3c0;
-      --border:#232a34;
+      --bg:#f8f9fb;
+      --card:#ffffffdd;
+      --accent:#ff9800;
+      --accent-2:#2196f3;
+      --text:#222;
+      --muted:#555;
+      --border:#ddd;
       --radius:18px;
-      --shadow:0 15px 35px rgba(0,0,0,.45);
+      --shadow:0 8px 20px rgba(0,0,0,.08);
       --maxw:1100px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body {
       margin:0;
       font-family: "Segoe UI", Roboto, Inter, sans-serif;
-      background: linear-gradient(120deg,#0f1320,#0a0f16 60%,#0e1116);
+      background: var(--bg);
       color: var(--text);
+      line-height:1.6;
     }
-
-    /* Layout */
+    html{scroll-behavior:smooth}
     .wrap{max-width:var(--maxw); margin:auto; padding:0 20px}
-    section{padding:50px 0; border-top:1px solid var(--border)}
+    section{padding:60px 0}
 
     /* Header */
     header {
-      position: sticky;
-      top:0; z-index:50;
-      background:#0e1116d9; backdrop-filter: blur(10px);
+      position: sticky; top:0; z-index:50;
+      background:#ffffffee; backdrop-filter: blur(8px);
       border-bottom:1px solid var(--border);
     }
     .nav{display:flex; align-items:center; justify-content:space-between; height:64px;}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700}
     .brand-badge {
-      width:36px; height:36px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--accent),#ff7a7a);
+      width:36px; height:36px; border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),#ffcc80);
       display:grid; place-items:center;
-      color:#101217; font-weight:900;
+      color:#fff; font-weight:900;
       box-shadow: var(--shadow);
     }
     nav a {
-      margin-left:18px; text-decoration:none; color:var(--text); font-weight:600; opacity:.9;
+      margin-left:18px; text-decoration:none; color:var(--text);
+      font-weight:600; opacity:.9;
     }
     nav a:hover{color:var(--accent)}
-    .menu-btn{display:none; background:none; border:0; color:var(--text); font-size:1.2rem}
+    .menu-btn{display:none; background:none; border:0; color:var(--text); font-size:1.3rem}
 
     /* Hero */
     .hero{padding:70px 0}
@@ -71,38 +69,36 @@
     h1{margin:.2rem 0; font-size:2.2rem}
     .btn {
       padding:12px 16px; border-radius:12px;
-      background:#1a202a; color:var(--text); text-decoration:none;
-      font-weight:700; display:inline-block; margin-right:10px;
-      transition:.2s transform, .2s box-shadow;
+      background:#f1f1f1; color:var(--text); text-decoration:none;
+      font-weight:600; display:inline-block; margin-right:10px;
+      transition:.2s;
     }
-    .btn.primary{background:linear-gradient(135deg,var(--accent),#ff7a7a); color:#101217}
-    .btn:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.4)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#ffcc80); color:#fff}
+    .btn:hover{transform:translateY(-2px); box-shadow: var(--shadow)}
 
     /* Sections */
     .sec-title{font-size:1.6rem; margin-bottom:20px; color:var(--accent)}
-    .card{background:var(--card); padding:18px; border-radius:var(--radius); border:1px solid var(--border)}
+    .card{background:var(--card); padding:20px; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow)}
 
     /* Projects */
-    .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px}
-    .proj{border:1px solid var(--border); border-radius:16px; overflow:hidden; background:var(--card)}
-    .proj img{width:100%; height:160px; object-fit:cover}
-    .proj-body{padding:14px}
-    .proj h3{margin:4px 0}
+    .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px}
+    .proj{border:1px solid var(--border); border-radius:16px; background:var(--card); padding:16px; box-shadow:var(--shadow)}
+    .proj h3{margin-top:0; color:var(--accent)}
 
     /* Contact */
     form{display:grid; gap:12px}
     input, textarea {
       padding:10px; border-radius:10px; border:1px solid var(--border);
-      background:#0f141b; color:var(--text); font-size:1rem;
+      background:#fff; font-size:1rem;
     }
     input:focus, textarea:focus {outline:2px solid var(--accent)}
     button[type=submit] {
       background:var(--accent); border:0; padding:12px;
-      border-radius:12px; font-weight:700; cursor:pointer;
+      border-radius:12px; font-weight:700; color:#fff; cursor:pointer;
     }
-    button:hover{background:#ffc56c}
+    button:hover{background:#ffac33}
 
-    footer{padding:20px; text-align:center; color:var(--muted)}
+    footer{padding:20px; text-align:center; color:var(--muted); border-top:1px solid var(--border)}
 
     /* Mobile */
     @media(max-width:700px){
@@ -111,7 +107,7 @@
       h1{font-size:1.8rem}
       .menu-btn{display:block}
       nav{display:none}
-      nav.open{display:block; position:absolute; top:64px; left:0; right:0; background:#0e1116f2; padding:20px}
+      nav.open{display:block; position:absolute; top:64px; left:0; right:0; background:#fff; padding:20px}
       nav a{display:block; margin:10px 0}
     }
   </style>
@@ -164,9 +160,9 @@
     <div class="wrap">
       <h2 class="sec-title">Skills</h2>
       <div class="card">
-        <p>Programming: C, C++, Python, HTML, CSS, JavaScript</p>
-        <p>Tools: Excel, Word, PowerPoint, GitHub</p>
-        <p>Strengths: Communication, Teamwork, Problem-Solving, Adaptability</p>
+        <p><b>Programming:</b> C, C++, Python, HTML, CSS, JavaScript</p>
+        <p><b>Tools:</b> Excel, Word, PowerPoint, GitHub</p>
+        <p><b>Strengths:</b> Communication, Teamwork, Problem-Solving, Adaptability</p>
       </div>
     </div>
   </section>
@@ -191,25 +187,20 @@
       <h2 class="sec-title">Projects</h2>
       <div class="projects">
         <div class="proj">
-          <img src="atm.jpg" alt="ATM Project Screenshot" />
-          <div class="proj-body">
-            <h3>ATM Interface (C)</h3>
-            <p>Simulated ATM program with PIN validation, deposits, and withdrawals.</p>
-          </div>
+          <h3>ATM Interface (C)</h3>
+          <p>Simulated ATM program with PIN validation, deposits, and withdrawals.</p>
         </div>
         <div class="proj">
-          <img src="budget.jpg" alt="Budget Tracker Screenshot" />
-          <div class="proj-body">
-            <h3>Budget Tracker (Python)</h3>
-            <p>Expense tracking tool with categories and monthly summaries.</p>
-          </div>
+          <h3>Budget Tracker (Python)</h3>
+          <p>Expense tracking tool with categories and monthly summaries.</p>
         </div>
         <div class="proj">
-          <img src="portfolio.jpg" alt="Portfolio Screenshot" />
-          <div class="proj-body">
-            <h3>Portfolio Website</h3>
-            <p>Responsive personal site showcasing my skills and work.</p>
-          </div>
+          <h3>Portfolio Website</h3>
+          <p>Responsive personal site showcasing my skills and work.</p>
+        </div>
+        <div class="proj">
+          <h3>Robotics Mini Projects</h3>
+          <p>Club experiments: basic line-following logic, sensor reading, and control routines.</p>
         </div>
       </div>
     </div>
@@ -236,11 +227,7 @@
   </footer>
 
   <script>
-    // Mobile nav toggle
-    function toggleMenu(){
-      document.getElementById("nav").classList.toggle("open");
-    }
-    // Year
+    function toggleMenu(){document.getElementById("nav").classList.toggle("open");}
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
